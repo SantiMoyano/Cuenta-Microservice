@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "tp4Arquitectura/cuenta"
+		},
+		{
+			"path": "tp4Arquitectura/infoTP"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "tp4Arquitectura/monopatin"
+		},
+		{
+			"path": "tp4Arquitectura/infoTP"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}
