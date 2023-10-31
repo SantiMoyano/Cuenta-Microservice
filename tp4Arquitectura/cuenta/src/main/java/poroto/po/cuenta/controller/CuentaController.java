@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,15 @@ public class CuentaController {
 
     @PostMapping
     public Cuenta crearCuenta(@RequestBody Cuenta cuenta) {
+        return repo.save(cuenta);
+    }
+
+    @PutMapping("/descontarCostoViaje/{idCuenta}")
+    public Cuenta descontarSaldo(@PathVariable Long idCuenta, @RequestBody Double costoViaje) {
+        Cuenta cuenta = repo.findById(idCuenta).orElse(null);
+        System.out.println(costoViaje);
+        Float restarSaldo = (float) (cuenta.getSaldo() - costoViaje);
+        cuenta.setSaldo(restarSaldo);
         return repo.save(cuenta);
     }
     
