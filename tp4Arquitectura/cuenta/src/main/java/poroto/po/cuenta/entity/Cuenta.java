@@ -1,6 +1,9 @@
 package poroto.po.cuenta.entity;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.cglib.core.Local;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +19,7 @@ public class Cuenta {
 
     private Integer mercado_pago;
     private Float saldo;
-    private String fecha_alta;
+    private LocalDate fecha_alta;
     private boolean habilitada;
 
 //  meter entity de Usuario en la carpeta una vez terminado 
@@ -25,7 +28,7 @@ public class Cuenta {
     
     public Cuenta() {
     }
-    public Cuenta(Integer mercado_pago, Float saldo, String fecha_alta) {
+    public Cuenta(Integer mercado_pago, Float saldo, LocalDate fecha_alta) {
         this.mercado_pago = mercado_pago;
         this.saldo = saldo;
         this.fecha_alta = fecha_alta;
@@ -56,11 +59,11 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    public String getFecha_alta() {
+    public LocalDate getFecha_alta() {
         return fecha_alta;
     }
 
-    public void setFecha_alta(String fecha_alta) {
+    public void setFecha_alta(LocalDate fecha_alta) {
         this.fecha_alta = fecha_alta;
     }
 
