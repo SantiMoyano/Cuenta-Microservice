@@ -21,17 +21,19 @@ public class CuentaController {
     private CuentaRepo repo;
 
     @GetMapping
-    public List<Cuenta> dameCuentas(){
+    public List<Cuenta> dameCuentas() {
         return repo.findAll();
     }
 
     @GetMapping("/tieneSaldo/{id}")
-    public Float tieneSaldo(@PathVariable Long id){
-    //  return repo.findAll();
-        Cuenta cuenta=repo.findById(id).get();
-        Float saldo=cuenta.getSaldo();
-        if (cuenta.isHabilitada()) return saldo;
-        else return (float) -1;
+    public Float tieneSaldo(@PathVariable Long id) {
+        // return repo.findAll();
+        Cuenta cuenta = repo.findById(id).get();
+        Float saldo = cuenta.getSaldo();
+        if (cuenta.isHabilitada())
+            return saldo;
+        else
+            return (float) -1;
 
     }
 
@@ -48,5 +50,15 @@ public class CuentaController {
         cuenta.setSaldo(restarSaldo);
         return repo.save(cuenta);
     }
-    
+
+    @PutMapping("/anularCuenta/{idCuenta}") 
+    public String anularCuenta(@PathVariable Long idCuenta) {
+        Cuenta cuenta = repo.findById(idCuenta).orElse(null);
+        if (cuenta!=null) {
+            cuenta.setHabilitada(false);
+            repo.save(cuenta);
+            return "Cuenta deshabilitada con exito";
+        }
+        return "No se encontro una cuenta con ese id";
+    }
 }
